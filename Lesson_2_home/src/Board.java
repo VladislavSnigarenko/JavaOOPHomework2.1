@@ -25,7 +25,7 @@ public class Board {
 			return;
 
 		if (boardParts[index] != null)
-			System.out.println("Part : " + index + " is busy.");
+			System.out.println("Part : " + index + " is busy. Exist : " + boardParts[index].getClass().getName());
 		else
 			boardParts[index] = shape;
 	}
@@ -44,19 +44,19 @@ public class Board {
 
 	private boolean checkIndex(int index) {
 		if (index < 0 || index > boardParts.length) {
-			System.out.println("Out-of-bounds array.");
+			System.out.println("Out-of-bounds array for index = " + index);
 			return false;
 		}
 		return true;
 	}
 
 	public void getInformation() {
-		String result = "\nBoard : " + name + "\n";
+		String result = "\nBoard : " + name + " parts : \n";
 		Double totalArea = 0.;
 		for (int i = 0; i < boardParts.length; i++) {
 
 			if (boardParts[i] == null)
-				result = result + "Patr [" + i + "] not busy.\n";
+				result = result + "Patr [" + i + "] is free.\n";
 			else {
 				totalArea = totalArea + boardParts[i].getArea();
 				result = result + "Patr [" + i + "] contains " + boardParts[i].getClass().getName() + "\n";
